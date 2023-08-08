@@ -1,0 +1,100 @@
+type:       map
+mapping:
+  "language":
+    type:      str
+    required:  yes
+  "dependency_deprecation_dates":
+    type:      seq
+    required:  no
+    sequence:
+      - type: map
+        mapping:
+         "match":
+           type: str
+           required: no
+         "version_line":
+           type: text
+           required: yes
+         "name":
+           type: str
+           required: yes
+         "date":
+           type: date
+           required: yes
+         "link":
+           type: str
+           required: no
+  "url_to_dependency_map":
+    type:      seq
+    required:  no
+    sequence:
+      - type: map
+        mapping:
+         "match":
+           type: str
+           required:  yes
+         "name":
+           type: str
+           required:  yes
+         "version":
+           type: text
+           required:  yes
+  "dependencies":
+    type:      seq
+    required:  yes
+    sequence:
+      - type: map
+        mapping:
+         "name":
+           type: str
+           required:  yes
+         "version":
+           type: text
+           required:  yes
+         "source":
+           type: str
+           required: no
+         "osl":
+           type: str
+           required: no
+         "uri":
+           type: str
+           required:  yes
+         "modules":
+           type: seq
+           required:  no
+           sequence:
+             - type: str
+         "source_sha256":
+           type: str
+           required:  no
+         "sha256":
+           type: str
+           required:  yes
+         "cf_stacks":
+           type: seq
+           required:  yes
+           sequence:
+             - type: str
+               enum: [ lucid64, cflinuxfs2, cflinuxfs3, windows2012R2, windows2016, opensuse42, sle12, sle15 ]
+  "exclude_files":
+    type:      seq
+    required:  yes
+    sequence:
+      - type: str
+  "default_versions":
+    type: seq
+    required: no
+    sequence:
+      - type: map
+        required: yes
+        mapping:
+         "name":
+           type: str
+           required:  yes
+         "version":
+           type: text
+           required:  yes
+  "pre_package":
+    type: str
+    required: no
